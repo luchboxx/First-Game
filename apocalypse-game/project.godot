@@ -13,3 +13,13 @@ config_version=5
 config/name="Apocalypse Game"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://entities/": "red",
+"res://globals/": "orange",
+"res://levels/": "yellow",
+"res://levels/global_prefabs/": "blue",
+"res://ui/": "green"
+}
