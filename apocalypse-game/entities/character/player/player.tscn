@@ -1,6 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce8xacipvtvc5"]
+[gd_scene load_steps=11 format=3 uid="uid://cfousimqx1h1d"]
 
 [ext_resource type="Script" path="res://entities/character/player/player.gd" id="1_kt20x"]
+[ext_resource type="Script" path="res://globals/resources/archetype/archetype.gd" id="2_hpg46"]
+[ext_resource type="Texture2D" uid="uid://djhbgebiclf46" path="res://entities/character/player/spr_beaver_dumpy_idle.png" id="3_1ukuo"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="Resource" id="Resource_26oj6"]
+script = ExtResource("2_hpg46")
+name = "Dev"
+max_health = 5
+move_speed = 0.75
+acceleration = 7
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm22k"]
+atlas = ExtResource("3_1ukuo")
+region = Rect2(0, 0, 28, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkmb1"]
+atlas = ExtResource("3_1ukuo")
+region = Rect2(28, 0, 28, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsxi6"]
+atlas = ExtResource("3_1ukuo")
+region = Rect2(56, 0, 28, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mlf2"]
+atlas = ExtResource("3_1ukuo")
+region = Rect2(84, 0, 28, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rl3nc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm22k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkmb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsxi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mlf2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jvffu"]
+margin = 0.0
+radius = 0.05
+
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_kt20x")
+archetype = SubResource("Resource_26oj6")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.294598, 0, 0, 0, 0.294598, 0, 0, 0, 0.294598, 0, 0.0711598, 0)
+shaded = true
+sprite_frames = SubResource("SpriteFrames_rl3nc")
+autoplay = "default"
+frame = 1
+frame_progress = 0.78528
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("SphereShape3D_jvffu")
