@@ -1,19 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://cfousimqx1h1d"]
 
 [ext_resource type="Script" path="res://entities/character/player/player.gd" id="1_kt20x"]
-[ext_resource type="Script" path="res://globals/resources/archetype/player_archetype/player_archetype.gd" id="2_t441t"]
+[ext_resource type="Script" path="res://globals/resources/archetype/archetype.gd" id="2_hpg46"]
 [ext_resource type="Texture2D" uid="uid://djhbgebiclf46" path="res://entities/character/player/spr_beaver_dumpy_idle.png" id="3_1ukuo"]
 
-[sub_resource type="Resource" id="Resource_ms6v3"]
-script = ExtResource("2_t441t")
-dash_speed = 1.25
-dash_acceleration = 1.75
-dash_time = 0.15
-dash_cooldown = 0.5
-name = "Archetype"
+[sub_resource type="Resource" id="Resource_26oj6"]
+script = ExtResource("2_hpg46")
+name = "Dev"
 max_health = 5
 move_speed = 1.0
-acceleration = 7.0
+acceleration = 7
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vm22k"]
 atlas = ExtResource("3_1ukuo")
@@ -57,7 +53,7 @@ radius = 0.05
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_kt20x")
-archetype = SubResource("Resource_ms6v3")
+archetype = SubResource("Resource_26oj6")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.294598, 0, 0, 0, 0.294598, 0, 0, 0, 0.294598, 0, 0.0711598, 0)
@@ -72,11 +68,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 shape = SubResource("SphereShape3D_jvffu")
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.25
 one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.15
 one_shot = true
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

@@ -28,10 +28,10 @@ func _process(delta: float) -> void:
 			sprite.look_at(Vector3(global_position.x, active_camera.global_position.y, active_camera.global_position.z))
 
 ## moves the entity in the direction of the provided Vector2
-func move(direction : Vector3, delta : float):
-	print(get_gravity())
-	velocity = velocity.move_toward(direction.normalized() * archetype.move_speed, archetype.acceleration * delta)
+func move(direction : Vector3, acceleration_modifier : float, delta : float):
+	velocity = velocity.move_toward(direction * archetype.move_speed, (archetype.acceleration * acceleration_modifier) * delta)
 	velocity += get_gravity() * delta
+	print(velocity)
 
 	move_and_slide()
 

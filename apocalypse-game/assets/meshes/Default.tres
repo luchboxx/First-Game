@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://8kjevjqlr8rr"]
+
+[ext_resource type="Texture2D" uid="uid://cbltssqijw03e" path="res://assets/meshes/templategrid_albedo.png" id="1_115ui"]
+
+[resource]
+resource_name = "Default"
+cull_mode = 2
+albedo_texture = ExtResource("1_115ui")
+roughness = 0.5
